@@ -7,7 +7,7 @@ module.exports.config = {
     description: "temp mail gen by Kyoo",
     commandCategory: "mail",
     usages: "[ask]",
-    cooldowns: 2,
+    cooldowns: 2
 };
 
 module.exports.run = async function({ api, event, args }) {
@@ -18,7 +18,7 @@ module.exports.run = async function({ api, event, args }) {
     const content = encodeURIComponent(args.join(" "));
     if (!args[0]) return api.sendMessage(`Please type ${global.config.PREFIX}mail gen`, tid, mid);
     try {
-        const res = await axios.get(`http://mail.ainzkyodev.repl.co/${content}`);
+        const res = await axios.get(`https://tempmail-h01q-o0f7.onrender.com/${content}`);
         const respond = res.data.email;
         if (res.data.error) {
             api.sendMessage(`Error: ${res.data.error}`, tid, (error, info) => {
